@@ -1,0 +1,20 @@
+# Render Blueprint: https://render.com/docs/blueprint-spec
+# После push в GitHub: Dashboard → New → Blueprint → выберите репозиторий
+services:
+  - type: web
+    name: sanepid-control
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: BIND_HOST
+        value: 0.0.0.0
+      - key: DB_PATH
+        value: /data/sanepid.db
+      - key: STATIC_DIR
+        value: /app/frontend
+      # SMTP — задайте вручную в Render Dashboard (Environment):
+      # SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, SMTP_FROM
+    # На бесплатном тарифе диск недоступен — БД пересоздаётся при деплое (демо-данные seed).

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SanEpid Control — санэпидконтроль клиники</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-pattern" aria-hidden="true"></div>
+  <canvas id="bg-particles" class="bg-particles" aria-hidden="true"></canvas>
+  <div id="app">
+    <header class="topbar" id="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <div>
+          <h1>SanEpid Control</h1>
+          <p>Пропускной и санитарный режим · клиника / стационар</p>
+        </div>
+      </div>
+      <nav id="nav" class="hidden"></nav>
+      <div id="topbar-tools" class="topbar-tools hidden">
+        <span id="live-clock" class="live-clock"></span>
+        <button type="button" class="theme-btn" id="theme-toggle" title="Тёмная тема">🌙</button>
+        <button type="button" class="notif-btn" id="notif-btn" onclick="navigate('incidents')" title="Инциденты">
+          🔔 <span id="notif-count" class="notif-count hidden">0</span>
+        </button>
+      </div>
+      <div id="user-info" class="user-info hidden"></div>
+    </header>
+    <main id="view">
+      <div class="boot-screen">
+        <div class="boot-icon">+</div>
+        <p>Загрузка системы...</p>
+      </div>
+    </main>
+    <footer class="footer">
+      <span>SanEpid Control</span>
+      <span class="dot">·</span>
+      <span>Контроль доступа</span>
+      <span class="dot">·</span>
+      <span id="footer-status" class="footer-status">Загрузка статуса…</span>
+    </footer>
+  </div>
+  <div id="welcome-splash" class="welcome-splash hidden" aria-hidden="true">
+    <div class="welcome-card">
+      <div class="welcome-icon">✚</div>
+      <p class="welcome-label">Добро пожаловать</p>
+      <p class="welcome-name"></p>
+      <small>SanEpid Control · клиника</small>
+    </div>
+  </div>
+  <div id="toast" class="toast hidden"></div>
+  <div id="cmd-palette" class="cmd-palette hidden" aria-hidden="true">
+    <div class="cmd-backdrop"></div>
+    <div class="cmd-panel">
+      <input id="cmd-input" placeholder="Быстрый переход… (Ctrl+K)" autocomplete="off">
+      <div id="cmd-list" class="cmd-list"></div>
+    </div>
+  </div>
+  <div id="tour-overlay" class="tour-overlay hidden" aria-hidden="true">
+    <div class="tour-spotlight"></div>
+    <div class="tour-card">
+      <div id="tour-step-label" class="tour-step-label"></div>
+      <h3 id="tour-title"></h3>
+      <p id="tour-text"></p>
+      <div class="tour-actions">
+        <button type="button" class="btn btn-ghost btn-sm" id="tour-skip">Пропустить</button>
+        <button type="button" class="btn btn-primary btn-sm" id="tour-next">Далее</button>
+      </div>
+    </div>
+  </div>
+  <script src="interactive.js"></script>
+  <script src="polish.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
